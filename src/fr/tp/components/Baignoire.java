@@ -2,7 +2,7 @@ package fr.tp.components;
 
 public class Baignoire implements Runnable {
     final int MAX_VOLUME;
-    private int currentVolume;
+    public int currentVolume;
     private int volumeDeFuite;
 
     public Baignoire(int MAX_VOLUME, int volumeDeFuite) {
@@ -24,14 +24,17 @@ public class Baignoire implements Runnable {
     }
 
     public void fuite() {
-        if (this.currentVolume > 0) {
-            this.currentVolume = this.getCurrentVolume() - this.volumeDeFuite;
-            System.out.println(this.currentVolume);
-        }
+        setCurrentVolume(this.getCurrentVolume() - this.volumeDeFuite);
+        System.out.println(this.currentVolume);
     }
 
     @Override
     public void run() {
-        System.out.println("Yo baignoire");
+        System.out.println("Thread de la baignoire");
+        synchronized (this) {
+            while(this.currentVolume > 0) {
+                fuite();
+            }
+        }
     }
 }
