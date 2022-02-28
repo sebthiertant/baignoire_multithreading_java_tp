@@ -6,7 +6,7 @@ import fr.tp.components.Robinet;
 public class Main {
     public static void main(String[] args) {
 
-        Baignoire baignoire = new Baignoire(1000);
+        Baignoire baignoire = new Baignoire(1000, 10);
 
         //Thread threadBagnoire = new Thread(baignoire);
         //threadBagnoire.start();

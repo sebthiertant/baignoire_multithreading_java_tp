@@ -3,10 +3,12 @@ package fr.tp.components;
 public class Baignoire implements Runnable {
     final int MAX_VOLUME;
     private int currentVolume;
+    private int volumeDeFuite;
 
-    public Baignoire(int MAX_VOLUME) {
+    public Baignoire(int MAX_VOLUME, int volumeDeFuite) {
         this.MAX_VOLUME = MAX_VOLUME;
         this.currentVolume = 0;
+        this.volumeDeFuite = volumeDeFuite;
     }
 
     public int getMAX_VOLUME() {
@@ -19,6 +21,12 @@ public class Baignoire implements Runnable {
 
     public void setCurrentVolume(int currentVolume) {
         this.currentVolume = currentVolume;
+    }
+
+    public void fuite() {
+        if (this.currentVolume > 0) {
+            System.out.println(this.currentVolume);
+        }
     }
 
     @Override
