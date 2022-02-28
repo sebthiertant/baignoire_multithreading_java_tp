@@ -25,6 +25,7 @@ public class Baignoire implements Runnable {
 
     public void fuite() {
         if (this.currentVolume > 0) {
+            this.currentVolume = this.getCurrentVolume() - this.volumeDeFuite;
             System.out.println(this.currentVolume);
         }
     }
