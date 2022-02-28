@@ -30,7 +30,6 @@ public class Baignoire implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Thread de la baignoire");
         while(this.currentVolume > 0) {
            fuite();
         }

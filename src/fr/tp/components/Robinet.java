@@ -22,7 +22,6 @@ public class Robinet implements Runnable{
 
     @Override
     public void run() {
-        System.out.println("Thread du robinet");
         while ((this.baignoire.getCurrentVolume() < this.baignoire.getMAX_VOLUME() - this.volumeDebite) || (this.baignoire.getCurrentVolume() == 0)) {
             debite();
         }
