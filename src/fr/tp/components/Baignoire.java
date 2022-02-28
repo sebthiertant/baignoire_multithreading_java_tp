@@ -23,18 +23,19 @@ public class Baignoire implements Runnable {
         this.currentVolume = currentVolume;
     }
 
-    public void fuite() {
+    public synchronized void fuite() {
         setCurrentVolume(this.getCurrentVolume() - this.volumeDeFuite);
-        System.out.println(this.currentVolume);
+        System.out.println("La baignoire fuit, il reste " + this.currentVolume +"L dedans !");
     }
 
     @Override
     public void run() {
         System.out.println("Thread de la baignoire");
-        synchronized (this) {
-            while(this.currentVolume > 0) {
-                fuite();
-            }
+        while(this.currentVolume > 0) {
+           fuite();
+        }
+        if (this.currentVolume == 0) {
+            System.out.println("La baignoire a trop fuit ! Elle est désormais vide.");
         }
     }
 }

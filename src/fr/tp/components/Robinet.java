@@ -11,6 +11,9 @@ public class Robinet implements Runnable{
         this.volumeDebite = volumeDebite;
     }
 
+    public int getVolumeDebite() {
+        return volumeDebite;
+    }
 
     public void debite() {
         this.baignoire.setCurrentVolume(this.baignoire.getCurrentVolume() + this.volumeDebite);
@@ -20,10 +23,8 @@ public class Robinet implements Runnable{
     @Override
     public void run() {
         System.out.println("Thread du robinet");
-        synchronized (this.baignoire) {
-            while (this.baignoire.getCurrentVolume() < this.baignoire.getMAX_VOLUME() - this.volumeDebite) {
-                debite();
-            }
+        while ((this.baignoire.getCurrentVolume() < this.baignoire.getMAX_VOLUME() - this.volumeDebite) || (this.baignoire.getCurrentVolume() == 0)) {
+            debite();
         }
     }
 }
