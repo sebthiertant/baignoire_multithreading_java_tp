@@ -12,8 +12,8 @@ public class Main {
         //threadBagnoire.start();
 
         Robinet robinet = new Robinet(baignoire, 50);
-        //robinet.setOpen(true);
-        //robinet.debite();
+        robinet.setOpen(true);
+        robinet.debite();
 
        // Thread threadRobinet = new Thread(robinet);
         //threadRobinet.start();

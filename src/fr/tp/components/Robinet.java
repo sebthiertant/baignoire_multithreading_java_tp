@@ -18,8 +18,10 @@ public class Robinet implements Runnable{
 
     public void debite() {
         if (this.isOpen) {
-            this.baignoire.setCurrentVolume(this.baignoire.getCurrentVolume() + this.volumeDebite);
-            System.out.println("La baignoire contient " + this.baignoire.getCurrentVolume() + "L sur un maximum de " + this.baignoire.getMAX_VOLUME() + "L.");
+            while (this.baignoire.getCurrentVolume() < this.baignoire.getMAX_VOLUME() - this.volumeDebite) {
+                this.baignoire.setCurrentVolume(this.baignoire.getCurrentVolume() + this.volumeDebite);
+                System.out.println("La baignoire contient " + this.baignoire.getCurrentVolume() + "L sur un maximum de " + this.baignoire.getMAX_VOLUME() + "L.");
+            }
         }
         else {
             System.out.println("Le robinet n'est pas ouvert");
